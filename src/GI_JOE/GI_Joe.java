@@ -22,6 +22,7 @@ public class GI_Joe implements ActionListener {
 	JButton Zartan = new JButton();
 	JButton StormShadow = new JButton();
 	JButton SgtSlaughter = new JButton();
+	JButton[] choices = new JButton[5];
 //	JButton fourButton = new JButton();
 //	JButton fiveButton = new JButton();
 	// JButton sixButton = new JButton();
@@ -36,57 +37,55 @@ public class GI_Joe implements ActionListener {
 
 		frame.setVisible(true);
 
-		Flint.setText("Flint!");
-		SnakeEyes.setText("SnakeEyes!");
-		StormShadow.setText("Storm Shadow!");
-		SgtSlaughter.setText("Sgt. Slaughter!");
-		Zartan.setText("Zartan!");
+		
 //fourButton.setText("Spirit!");
 //fiveButton.setText("RoadBlock!");
 //sixButton.setText("Shipreck!");
 
 		frame.setBounds(450, 0, 500, 100);
-		panel.add(StormShadow);
-		panel.add(Zartan);
-		panel.add(SnakeEyes);
-		panel.add(Flint);
-		panel.add(SgtSlaughter);
+		
+		
+		for (int i = 0; i < 5; i++) {
+			choices[i]= new JButton();
+			choices[i].addActionListener(this);
+			panel.add(choices[i]);
+		}
+		choices[0].setText("StormShadow!");
+		choices[1].setText("Flint!");
+		choices[2].setText("Zartan!");
+		choices[3].setText("SnakeEyes!");
+		choices[4].setText("Sgt. Slaughter!");
 //panel.add(fourButton);
 //panel.add(fiveButton);
 //panel.add(sixButton);
 		frame.setTitle("Which GI Joe would you like to be? YO JOE!!!");
 //frame.pack();
-		StormShadow.addActionListener(this);
-		SnakeEyes.addActionListener(this);
-		Flint.addActionListener(this);
-
-		SgtSlaughter.addActionListener(this);
-		Zartan.addActionListener(this);
+		
 	}
 
 	public int characterConfirm(JButton button) {
-		if (button == StormShadow) {
+		if (button == choices[0]) {
 			chosen = ("Storm Shadow!!");
 			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
 			return 1;
 
 		}
-		if (button == SgtSlaughter) {
+		if (button == choices[4]) {
 			chosen = ("Sgt. Slaughter!");
 			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
 			return 2;
 		}
-		if (button == Zartan) {
+		if (button == choices[2]) {
 			chosen = ("Zartan!");
 			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
 			return 3;
 		}
-		if (button == SnakeEyes) {
+		if (button == choices[3]) {
 			chosen = ("SnakeEyes!");
 			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
 			return 4;
 		}
-		if (button == Flint) {
+		if (button == choices[1]) {
 			chosen = ("Flint!");
 			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
 			return 5;
@@ -99,24 +98,45 @@ public class GI_Joe implements ActionListener {
 		panel = new JPanel();
 		frame.add(panel);
 		frame.setBounds(450, 0, 500, 100);
-		frame.setTitle("Operation Desert Storm : Your Mission if you choose to accept is this:");
+		JOptionPane.showMessageDialog(null, "Operation Desert Storm : Your Mission if you choose to accept is this:");
 		label = new JLabel();
-		label.setText("Infultrate the GI Joe Headquarters and descover their plans ");
-		JLabel l = new JLabel("<html>Mission Code: <br/>CODE/SHADOW<html>",SwingConstants.CENTER);
-		panel.add(l);
+		JOptionPane.showMessageDialog(null, "Infultrate the GI Joe Headquarters and descover their plans!");
+		JOptionPane.showMessageDialog(null, "CODE SHADOW");
 		panel.add(label);
-		Next.addActionListener(this);
-		Next.setText("Start Mission!");
-		panel.add(Next);
-		//next
+		for (int i = 0; i < 3; i++) {
+			panel.add(choices[i]);
+		}
+		choices[0].setText("Parachute In!");
+		choices[1].setText("Climb Through the Sewers!");
+		choices[2].setText("Sneak In!");
+		JOptionPane.showMessageDialog(null, "Start Mission!");
+		
 		frame.setVisible(true);
 		frame.pack();
 		state=1;
+	}
+	public void stormShadow6() {
 		
 	}
+	public int checkSstart(JButton button) {
+		if(button == choices[0]) {
+			JOptionPane.showMessageDialog(null, "You jumped out of the Cobra helecopter and \n landed on the roof of the GI Joe HQ!");
+		
+		return 6;
+		}if(button == choices[1]) {
+			JOptionPane.showMessageDialog(null, "You");
+		
+		return 7;
+		}if(button == choices[2]) {
+			JOptionPane.showMessageDialog(null, "You jumped out of the Cobra helecopter and \n landed on the roof of the GI Joe HQ");
+		
+		return 8;
+		}
+		
+		return 0;
+	}
 	public void  stormShadowTwo() {
-		state =1;
-		nextState = 2;
+		
 		frame.dispose();
 		frame = new JFrame();
 		panel = new JPanel();
@@ -129,7 +149,7 @@ public class GI_Joe implements ActionListener {
 		JOptionPane.showMessageDialog(null, "Process complete!");
 		frame.setBounds(450, 0, 500, 100);
 		frame.isVisible();
-		
+		state =2;
 		}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -140,6 +160,7 @@ public class GI_Joe implements ActionListener {
 			nextState = characterConfirm((JButton) arg0.getSource());
 			break;
 		case 1:
+			nextState=checkSstart((JButton) arg0.getSource());
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, state + " State Not Found");
