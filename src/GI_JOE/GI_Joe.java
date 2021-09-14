@@ -115,24 +115,57 @@ public class GI_Joe implements ActionListener {
 		frame.pack();
 		state=1;
 	}
+	public void Game_Over(){
+		JOptionPane.showMessageDialog(null, "You failed to complete your Mission! Game Over!");
+		
+		frame.dispose();
+	}
 	public void stormShadow6() {
 		
 	}
 	public int checkSstart(JButton button) {
 		if(button == choices[0]) {
 			JOptionPane.showMessageDialog(null, "You jumped out of the Cobra helecopter and \n landed on the roof of the GI Joe HQ!");
-		
+			JOptionPane.showMessageDialog(null, "You climb into a corrador, \n there are two ways to go! \n Left or Down to the Basement!");
 		return 6;
 		}if(button == choices[1]) {
-			JOptionPane.showMessageDialog(null, "You");
+			JOptionPane.showMessageDialog(null, "You climb into the Sewers and start to walk!");
+			JOptionPane.showMessageDialog(null, "As you make your way through the Sewers, \n you hear squeaks and squeals! You try and flee \n but the Rats take you down!");
 		
-		return 7;
+			return 7;
 		}if(button == choices[2]) {
-			JOptionPane.showMessageDialog(null, "You jumped out of the Cobra helecopter and \n landed on the roof of the GI Joe HQ");
-		
+			JOptionPane.showMessageDialog(null, "You hang on to a GI Joe shipping truck and \n find your self at the cargo bay!");
+		// [START HERE]
 		return 8;
 		}
 		
+		return 0;
+	}
+	public void SS6_choice() {
+		frame = new JFrame();
+		panel = new JPanel();
+		frame.add(panel);
+		choices[0] = new JButton();
+		choices[0].setText("Left!");
+		choices[1] = new JButton();
+		choices[1].setText("Down into the Basement!");
+		panel.add(choices[0]);
+		panel.add(choices[1]);
+		
+		state=9;
+	}
+	public int checkSS(JButton button) {
+		if(button == choices[0]) {
+			JOptionPane.showMessageDialog(null, "You walk left, tense and scared. \n As you keep walking through the corrador, \n you notice there is no one around,\n until...");
+			JOptionPane.showMessageDialog(null, "Wam! \n Someone slams into you, \n throwing you to the ground. StormShadow you are under arrest by GI_Joe!");
+
+		return 7;
+		}if(button == choices[1]) {
+			JOptionPane.showMessageDialog(null, "You climb into the Sewers and start to walk!");
+			
+		
+			return 7;
+		}
 		return 0;
 	}
 	public void  stormShadowTwo() {
@@ -162,6 +195,8 @@ public class GI_Joe implements ActionListener {
 		case 1:
 			nextState=checkSstart((JButton) arg0.getSource());
 			break;
+		case 9:
+			
 		default:
 			JOptionPane.showMessageDialog(null, state + " State Not Found");
 		}
@@ -172,6 +207,13 @@ public class GI_Joe implements ActionListener {
 		case 2:
 			stormShadowTwo();
 			break;
+		case 6:
+			SS6_choice();
+			break;
+		case 7:
+			Game_Over();
+			break;
+		
 			default:
 				JOptionPane.showMessageDialog(null, nextState + " Next State Not found");
 			
