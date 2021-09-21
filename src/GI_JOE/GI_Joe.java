@@ -23,24 +23,17 @@ public class GI_Joe implements ActionListener {
 	JButton StormShadow = new JButton();
 	JButton SgtSlaughter = new JButton();
 	JButton[] choices = new JButton[5];
-//	JButton fourButton = new JButton();
-//	JButton fiveButton = new JButton();
-	// JButton sixButton = new JButton();
 
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 
 	public void character() {
-//	String Name = JOptionPane.showInputDialog( null, "Which GI_JOE would you like to be?");
 
 		frame.add(panel);
 
 		frame.setVisible(true);
 
 		
-//fourButton.setText("Spirit!");
-//fiveButton.setText("RoadBlock!");
-//sixButton.setText("Shipreck!");
 
 		frame.setBounds(450, 0, 500, 100);
 		
@@ -55,11 +48,7 @@ public class GI_Joe implements ActionListener {
 		choices[2].setText("Zartan!");
 		choices[3].setText("SnakeEyes!");
 		choices[4].setText("Sgt. Slaughter!");
-//panel.add(fourButton);
-//panel.add(fiveButton);
-//panel.add(sixButton);
 		frame.setTitle("Which GI Joe would you like to be? YO JOE!!!");
-//frame.pack();
 		
 	}
 
@@ -135,7 +124,7 @@ public class GI_Joe implements ActionListener {
 			return 7;
 		}if(button == choices[2]) {
 			JOptionPane.showMessageDialog(null, "You hang on to a GI Joe shipping truck and \n find your self at the cargo bay!");
-		// [START HERE]
+		
 		return 8;
 		}
 		
@@ -184,6 +173,49 @@ public class GI_Joe implements ActionListener {
 		frame.isVisible();
 		state =2;
 		}
+	
+	public void SS11(){
+		state=11;
+		frame.dispose();
+		frame = new JFrame();
+		panel = new JPanel();
+		frame.add(panel);
+		choices[0].setText("Observe!");
+		choices[1].setText("Run for the enterence!");
+		panel.add(choices[1]);
+		panel.add(choices[0]);
+		frame.setBounds(450, 0, 500, 100);
+		frame.pack();
+		frame.setVisible(true);
+		
+	}
+	public int SS11check(JButton button) {
+		if(button == choices[0]) {
+			JOptionPane.showMessageDialog(null, "As you hide behind a truck, you see workers. \n You can only hear little bits of their conversation. \n all you can hear is this \n 'Room A23' \n 'Secret Plans'");
+			JOptionPane.showMessageDialog(null, "You see three men exit the door \n When they leave you dart into the room \n ");
+		return 12;
+		}if(button == choices[1]) {
+			JOptionPane.showMessageDialog(null, "You make a run for the door! \n You find three Workers inside! \n they stand up when they see you! \n You punch one, kick another, and smash a chair over the last one. \n A Worker from outside cetches you in the head with a baton \n and you slip into unconsciousness");
+			
+		
+			return 7;
+		}
+		return 0;
+	}
+	public void SS12() {
+		state=11;
+		frame.dispose();
+		frame = new JFrame();
+		panel = new JPanel();
+		frame.add(panel);
+		choices[0].setText("Observe!");
+		choices[1].setText("Run for the enterence!");
+		panel.add(choices[1]);
+		panel.add(choices[0]);
+		frame.setBounds(450, 0, 500, 100);
+		frame.pack();
+		frame.setVisible(true);
+	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -195,8 +227,9 @@ public class GI_Joe implements ActionListener {
 		case 1:
 			nextState=checkSstart((JButton) arg0.getSource());
 			break;
-		case 9:
-			
+		case 11:
+			nextState=SS11check((JButton) arg0.getSource());
+			break;
 		default:
 			JOptionPane.showMessageDialog(null, state + " State Not Found");
 		}
@@ -213,7 +246,12 @@ public class GI_Joe implements ActionListener {
 		case 7:
 			Game_Over();
 			break;
-		
+		case 8:
+			SS11();
+			break;
+		case 11:
+			SS12();
+			break;
 			default:
 				JOptionPane.showMessageDialog(null, nextState + " Next State Not found");
 			
