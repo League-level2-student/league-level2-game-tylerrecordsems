@@ -237,7 +237,7 @@ public class GI_Joe implements ActionListener {
 		case 1:
 			stormShadowStart();
 			break;
-		case 2:
+		case 2: 
 			stormShadowTwo();
 			break;
 		case 6:
