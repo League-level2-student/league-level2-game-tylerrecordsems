@@ -3,6 +3,7 @@ package GI_JOE;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -191,8 +192,8 @@ public class GI_Joe implements ActionListener {
 	}
 	public int SS11check(JButton button) {
 		if(button == choices[0]) {
-			JOptionPane.showMessageDialog(null, "As you hide behind a truck, you see workers. \n You can only hear little bits of their conversation. \n all you can hear is this \n 'Room A23' \n 'Secret Plans'");
-			JOptionPane.showMessageDialog(null, "You see three men exit the door \n When they leave you dart into the room \n ");
+			JOptionPane.showMessageDialog(null, "As you hide behind a truck, you see workers. \n You can only hear little bits of their conversation. \n all you can hear is this \n 'Room A5' \n 'Secret Plans'");
+			JOptionPane.showMessageDialog(null, "You see three men exit the door \n When they leave you dart into the room they left \n You continue through the room and enter a hallway \n Three men stand there and see you \n Let the Fight Begin!");
 		return 12;
 		}if(button == choices[1]) {
 			JOptionPane.showMessageDialog(null, "You make a run for the door! \n You find three Workers inside! \n they stand up when they see you! \n You punch one, kick another, and smash a chair over the last one. \n A Worker from outside cetches you in the head with a baton \n and you slip into unconsciousness");
@@ -208,10 +209,35 @@ public class GI_Joe implements ActionListener {
 		frame = new JFrame();
 		panel = new JPanel();
 		frame.add(panel);
-		choices[0].setText("Observe!");
-		choices[1].setText("Run for the enterence!");
+		choices[0].setText(" ");
+		choices[1].setText(" ");
+		choices[2].setText(" ");
 		panel.add(choices[1]);
 		panel.add(choices[0]);
+		panel.add(choices[2]);
+		
+		
+		JOptionPane.showMessageDialog(null, "You have successfully defeated the three men \n you walk into a large room and see six rooms (1-6)");
+		String room = JOptionPane.showInputDialog("Type which room you would like to enter!");
+		if(room.equals(1)) {
+			JOptionPane.showMessageDialog(null, "You enter room 1 and find nothing.");
+			
+		}if(room.equals(2)) {
+			JOptionPane.showMessageDialog(null, "You enter room 2 and find a sleeping Hawk.");
+			
+		}if(room.equals(3)) {
+			JOptionPane.showMessageDialog(null, "You enter room 3 and find a small libery.");
+			
+		}if(room.equals(4)) {
+			JOptionPane.showMessageDialog(null, "You enter room 4 and find a kitchen.");
+			
+		}if(room.equals(5)) {
+			JOptionPane.showMessageDialog(null, "You enter room 5 and find a command room. You continue!");
+			
+		}if(room.equals(6)) {
+			JOptionPane.showMessageDialog(null, "You enter room 6 and find a tank.");
+			
+		}
 		frame.setBounds(450, 0, 500, 100);
 		frame.pack();
 		frame.setVisible(true);
@@ -249,7 +275,7 @@ public class GI_Joe implements ActionListener {
 		case 8:
 			SS11();
 			break;
-		case 11:
+		case 12:
 			SS12();
 			break;
 			default:
