@@ -192,7 +192,7 @@ public class GI_Joe implements ActionListener {
 	}
 	public int SS11check(JButton button) {
 		if(button == choices[0]) {
-			JOptionPane.showMessageDialog(null, "As you hide behind a truck, you see workers. \n You can only hear little bits of their conversation. \n all you can hear is this \n 'Room A5' \n 'Secret Plans'");
+			JOptionPane.showMessageDialog(null, "As you hide behind a truck, you see workers. \n You can only hear little bits of their conversation. \n all you can hear is this \n 'Room A4' \n 'Secret Plans'");
 			JOptionPane.showMessageDialog(null, "You see three men exit the door \n When they leave you dart into the room they left \n You continue through the room and enter a hallway \n Three men stand there and see you \n Let the Fight Begin!");
 		return 12;
 		}if(button == choices[1]) {
@@ -204,43 +204,61 @@ public class GI_Joe implements ActionListener {
 		return 0;
 	}
 	public void SS12() {
-		state=11;
+		state=12;
 		frame.dispose();
 		frame = new JFrame();
 		panel = new JPanel();
 		frame.add(panel);
-		choices[0].setText(" ");
-		choices[1].setText(" ");
-		choices[2].setText(" ");
-		panel.add(choices[1]);
+		JOptionPane.showMessageDialog(null, "You quickly take down the three men \n you walk into a large room and see six rooms (1-5)");
+		choices[0].setText("Room A1");
+		choices[1].setText("Room A2");
+		choices[2].setText("Room A3");
+		choices[3].setText("Room A4");
+		choices[4].setText("Room A5");
 		panel.add(choices[0]);
+		panel.add(choices[1]);
 		panel.add(choices[2]);
+		panel.add(choices[3]);
+		panel.add(choices[4]);
+
 		
-		
-		JOptionPane.showMessageDialog(null, "You have successfully defeated the three men \n you walk into a large room and see six rooms (1-6)");
-		String room = JOptionPane.showInputDialog("Type which room you would like to enter!");
-		if(room.equals(1)) {
-			JOptionPane.showMessageDialog(null, "You enter room 1 and find nothing.");
-			
-		}if(room.equals(2)) {
-			JOptionPane.showMessageDialog(null, "You enter room 2 and find a sleeping Hawk.");
-			
-		}if(room.equals(3)) {
-			JOptionPane.showMessageDialog(null, "You enter room 3 and find a small libery.");
-			
-		}if(room.equals(4)) {
-			JOptionPane.showMessageDialog(null, "You enter room 4 and find a kitchen.");
-			
-		}if(room.equals(5)) {
-			JOptionPane.showMessageDialog(null, "You enter room 5 and find a command room. You continue!");
-			
-		}if(room.equals(6)) {
-			JOptionPane.showMessageDialog(null, "You enter room 6 and find a tank.");
-			
-		}
+	
+	
 		frame.setBounds(450, 0, 500, 100);
 		frame.pack();
 		frame.setVisible(true);
+		
+	} 
+	public int SS12check(JButton button) {
+		if(button == choices[0]) {
+			JOptionPane.showMessageDialog(null, "You enter room 1 and find nothing.");
+			
+		return 12;
+		}if(button == choices[1]) {
+			JOptionPane.showMessageDialog(null, "You enter room 2 and find a sleeping Hawk.");
+			
+		
+			return 12;
+		}if(button == choices[2]) {
+			JOptionPane.showMessageDialog(null, "You enter room 3 and find a kitchen.");
+			
+		
+			return 12;
+		}if(button == choices[3]) {
+			JOptionPane.showMessageDialog(null, "You enter room 4 and find a command room. You continue!");
+			
+		
+			return 13;
+		}if(button == choices[4]) {
+			JOptionPane.showMessageDialog(null, "You enter room 5 and find a tank.");
+			
+			
+			return 12;
+		}
+		return 0;
+	}
+	public void SS13() {
+		JOptionPane.showMessageDialog(null, "You walk into Room A5 \n and you see a computer and lab \n this computer says \n :PROJECT TAKEDOWN: \n This new Hacking Technology will be able to hack any Evil Corperation such as Cobra and bring it down \n We will also take Evil Agents like Storm Shadow and Zartan \n");
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -255,6 +273,9 @@ public class GI_Joe implements ActionListener {
 			break;
 		case 11:
 			nextState=SS11check((JButton) arg0.getSource());
+			break;
+		case 12:
+			nextState=SS12check((JButton) arg0.getSource());
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, state + " State Not Found");
@@ -277,6 +298,9 @@ public class GI_Joe implements ActionListener {
 			break;
 		case 12:
 			SS12();
+			break;
+		case 13:
+			SS13();
 			break;
 			default:
 				JOptionPane.showMessageDialog(null, nextState + " Next State Not found");
