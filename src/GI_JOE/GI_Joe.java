@@ -327,7 +327,7 @@ public class GI_Joe implements ActionListener {
 		case 0:
 			nextState = characterConfirm((JButton) arg0.getSource());
 			break;
-		case 1:
+		case 1: 
 			nextState=checkSstart((JButton) arg0.getSource());
 			break;
 		case 11:
