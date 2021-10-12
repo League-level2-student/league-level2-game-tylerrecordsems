@@ -258,8 +258,67 @@ public class GI_Joe implements ActionListener {
 		return 0;
 	}
 	public void SS13() {
-		JOptionPane.showMessageDialog(null, "You walk into Room A5 \n and you see a computer and lab \n this computer says \n :PROJECT TAKEDOWN: \n This new Hacking Technology will be able to hack any Evil Corperation such as Cobra and bring it down \n We will also take Evil Agents like Storm Shadow and Zartan \n");
+		state=13;
+		frame.dispose();
+		frame = new JFrame();
+		panel = new JPanel();
+		frame.add(panel);
+		JOptionPane.showMessageDialog(null, "You walk into Room A5 \n and you see a computer and lab \n this computer says \n PROJECT TAKEDOWN: \n This new Hacking Technology will be able to hack any Evil Corperation such as Cobra and bring them to their knees \n We will also take Evil Agents like Storm Shadow and Zartan \n");
+		JOptionPane.showMessageDialog(null, "'HEY' What are you doing here!' \n 'Hands in the air' \n you hear gun shots behind you as you run out of the room! \n  ");
+		choices[0].setText("Back through where you came from!");
+		choices[1].setText("Climb out the window!");
+		choices[2].setText("hiding in the Rooms!");
+		panel.add(choices[0]);
+		panel.add(choices[1]);
+		panel.add(choices[2]);
+		
+		frame.pack();
+	frame.setVisible(true);
 	}
+	public int SS13check(JButton button) {
+		if(button == choices[0]) {
+			JOptionPane.showMessageDialog(null, "You run back through the cordors and \n dashed into a empty room \n the doors close and gas fills the room \n You fall into unconsciousness");
+			
+		return 7;
+		}if(button == choices[1]) {
+			JOptionPane.showMessageDialog(null, "You jump out the room and find you are on the 8th floor \n you fall a few stories \n you open your eyes and wake up \n it was all a dream \n 'Honey, get ready for school!' \n you leave for school \n meanwhile, a tv somewhere : \n GI Joe take Cobra down with a special  meathods." );
+			
+		
+			return 14;
+		}if(button == choices[2]) {
+			JOptionPane.showMessageDialog(null, "You come out of room A4 and \n look around the room");
+			
+		
+			return 15;
+		}
+		return 0;
+		
+	}
+	public void SSEnd1() {
+		JOptionPane.showMessageDialog(null, "Thank you for playing, can you find the other way to win?");
+		frame.dispose();
+	}
+	public void SS14() {
+		state=14;
+		frame.dispose();
+		frame = new JFrame();
+		panel = new JPanel();
+		frame.add(panel);
+		JOptionPane.showMessageDialog(null, "You quickly take down the three men \n you walk into a large room and see six rooms (1-5)");
+		choices[0].setText("Room A1");
+		choices[1].setText("Room A2");
+		choices[2].setText("Room A3");
+		choices[4].setText("Room A5");
+		panel.add(choices[0]);
+		panel.add(choices[1]);
+		panel.add(choices[2]);
+		panel.add(choices[4]);
+	
+		frame.setBounds(450, 0, 500, 100);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -276,6 +335,9 @@ public class GI_Joe implements ActionListener {
 			break;
 		case 12:
 			nextState=SS12check((JButton) arg0.getSource());
+			break;
+		case 13:
+			nextState=SS13check((JButton) arg0.getSource());
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, state + " State Not Found");
@@ -301,6 +363,12 @@ public class GI_Joe implements ActionListener {
 			break;
 		case 13:
 			SS13();
+			break;
+		case 14:
+			SSEnd1();
+			break;
+		case 15:
+			SS14();
 			break;
 			default:
 				JOptionPane.showMessageDialog(null, nextState + " Next State Not found");
