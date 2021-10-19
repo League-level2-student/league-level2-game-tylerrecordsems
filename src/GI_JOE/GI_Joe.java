@@ -313,7 +313,7 @@ public class GI_Joe implements ActionListener {
 		panel.add(choices[1]);
 		panel.add(choices[2]);
 		panel.add(choices[4]);
-	
+	 
 		frame.setBounds(450, 0, 500, 100);
 		frame.pack();
 		frame.setVisible(true);
