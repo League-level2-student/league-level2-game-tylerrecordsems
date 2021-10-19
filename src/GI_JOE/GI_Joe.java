@@ -318,6 +318,31 @@ public class GI_Joe implements ActionListener {
 		frame.pack();
 		frame.setVisible(true);
 	}
+	public int SS14check(JButton button) {
+		if(button == choices[0]) {
+			JOptionPane.showMessageDialog(null, "You enter room 1 and find nothing.");
+			
+		
+			return 15;
+		}if(button == choices[1]) {
+			JOptionPane.showMessageDialog(null, "You enter room 2 and find a sleeping Hawk." );
+			
+		
+			return 15;
+		}if(button == choices[2]) {
+			JOptionPane.showMessageDialog(null, "You enter room 3 and find a kitchen");
+			
+		
+			return 15;
+		}if(button == choices[4]) {
+			JOptionPane.showMessageDialog(null, "You enter room 5 and find a tank! \n Your face grows into a mischievous grin. \n Boom! \n You bust out and ride into the sunset, completing your mission.");
+			
+		
+			return 14;
+		}
+		return 0;
+		
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -339,6 +364,8 @@ public class GI_Joe implements ActionListener {
 		case 13:
 			nextState=SS13check((JButton) arg0.getSource());
 			break;
+		case 14:
+			nextState=SS14check((JButton) arg0.getSource());
 		default:
 			JOptionPane.showMessageDialog(null, state + " State Not Found");
 		}
