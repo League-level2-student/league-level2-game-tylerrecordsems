@@ -116,7 +116,7 @@ public class GI_Joe implements ActionListener {
 
 	}
 
-	public int checkSstart(JButton button) {
+	public int checkSstart(JButton button) {   
 		if (button == choices[0]) {
 			JOptionPane.showMessageDialog(null,
 					"You jumped out of the Cobra helecopter and \n landed on the roof of the GI Joe HQ!");
@@ -154,7 +154,27 @@ public class GI_Joe implements ActionListener {
 
 		state = 9;
 	}
+public int SS6check(JButton button) {
+	if (button == choices[0]) {
+		JOptionPane.showMessageDialog(null,
+				"");
+		JOptionPane.showMessageDialog(null,
+				"");
 
+		return 7;
+	}
+	if (button == choices[1]) {
+		JOptionPane.showMessageDialog(null, "");
+
+		return 7;
+	}
+	return 0;
+}
+
+	public void SS7() {
+	
+}
+	//[START HEREEEEEEEEEEEE \/]
 	public int checkSS(JButton button) {
 		if (button == choices[0]) {
 			JOptionPane.showMessageDialog(null,
@@ -229,7 +249,7 @@ public class GI_Joe implements ActionListener {
 		panel = new JPanel();
 		frame.add(panel);
 		JOptionPane.showMessageDialog(null,
-				"You quickly take down the three men \n you walk into a large room and see five rooms (1-5)");
+				"You walk into a large room and see five rooms (1-5)");
 		choices[0].setText("Room A1");
 		choices[1].setText("Room A2");
 		choices[2].setText("Room A3");
@@ -382,6 +402,9 @@ public class GI_Joe implements ActionListener {
 		case 1:
 			nextState = checkSstart((JButton) arg0.getSource());
 			break;
+		case 9:
+			nextState = SS6check((JButton) arg0.getSource());
+			break;
 		case 11:
 			nextState = SS11check((JButton) arg0.getSource());
 			break;
@@ -397,9 +420,9 @@ public class GI_Joe implements ActionListener {
 			//JOptionPane.showMessageDialog(null, state + " State Not Found");
 		}
 		switch (nextState) {
-		case 1:
-			stormShadowStart();
-			break;
+//		case 1:
+//			stormShadowStart();
+//			break;
 		case 2:
 			stormShadowTwo();
 			break;
@@ -407,8 +430,11 @@ public class GI_Joe implements ActionListener {
 			SS6_choice();
 			break;
 		case 7:
-			Game_Over();
+			SS7();
 			break;
+//		case 7:
+//			Game_Over();
+//			break;
 		case 8:
 			SS11();
 			break;
