@@ -36,70 +36,42 @@ public class GI_Joe implements ActionListener {
 
 		frame.setBounds(450, 0, 500, 100);
 
+
 		for (int i = 0; i < 5; i++) {
 			choices[i] = new JButton();
 			choices[i].addActionListener(this);
-			panel.add(choices[i]);
+			
 		}
+		panel.add(choices[0]);
 		choices[0].setText("StormShadow!");
-		choices[1].setText("Flint!");
-		choices[2].setText("Zartan!");
-		choices[3].setText("SnakeEyes!");
-		choices[4].setText("Sgt. Slaughter!");
-		frame.setTitle("Which GI Joe would you like to be? YO JOE!!!");
+		//frame.setTitle("Start");
 
 	}
 
 	public int characterConfirm(JButton button) {
-		if (button == choices[0]) {
-			chosen = ("Storm Shadow!!");
-			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
-			return 1;
-		}
-		/*
-		if (button == choices[4]) {
-			chosen = ("Sgt. Slaughter!");
-			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
-			return 2;
-		}
-		if (button == choices[2]) {
-			chosen = ("Zartan!");
-			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
-			return 3;
-		}
-		if (button == choices[3]) {
-			chosen = ("SnakeEyes!");
-			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
-			return 4;
-		}
-		if (button == choices[1]) {
-			chosen = ("Flint!");
-			JOptionPane.showMessageDialog(null, "You have chosen " + chosen);
-			return 5;
-		}
+		JOptionPane.showMessageDialog(null, "You are StormShadow \n an Elite Spy \n You are apart of a Evil corporation named Cobra. \n Cobra's enemy is GI Joe \n or, the good guys");
 		
-		*/
-		return 0;
+		return 1;
 	}
 
 	public void stormShadowStart() {
 		frame.dispose();
 		frame = new JFrame();
 		panel = new JPanel();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(panel);
 		frame.setBounds(450, 0, 500, 100);
 		JOptionPane.showMessageDialog(null, "Operation Desert Storm : Your Mission if you choose to accept is this:");
-		label = new JLabel();
 		JOptionPane.showMessageDialog(null, "Infultrate the GI Joe Headquarters and descover their plans!");
 		JOptionPane.showMessageDialog(null, "CODE SHADOW");
-		panel.add(label);
-		for (int i = 0; i < 3; i++) {
-			panel.add(choices[i]);
-		}
+		JOptionPane.showMessageDialog(null, "Start Mission!");
+		panel.add(choices[0]);
+		panel.add(choices[1]);
+		panel.add(choices[2]);
 		choices[0].setText("Parachute In!");
 		choices[1].setText("Climb Through the Sewers!");
 		choices[2].setText("Sneak In!");
-		JOptionPane.showMessageDialog(null, "Start Mission!");
+		
 
 		frame.setVisible(true);
 		frame.pack();
@@ -112,12 +84,10 @@ public class GI_Joe implements ActionListener {
 		frame.dispose();
 	}
 
-	public void stormShadow6() {
-
-	}
+	
 
 	public int checkSstart(JButton button) {   
-		if (button == choices[0]) {
+		if (button == choices[0]) { 
 			JOptionPane.showMessageDialog(null,
 					"You jumped out of the Cobra helecopter and \n landed on the roof of the GI Joe HQ!");
 			JOptionPane.showMessageDialog(null,
@@ -141,7 +111,7 @@ public class GI_Joe implements ActionListener {
 		return 0;
 	}
 
-	public void SS6_choice() {
+	public void SS6_choice() {  
 		frame = new JFrame();
 		panel = new JPanel();
 		frame.add(panel);
@@ -154,26 +124,9 @@ public class GI_Joe implements ActionListener {
 
 		state = 9;
 	}
-public int SS6check(JButton button) {
-	if (button == choices[0]) {
-		JOptionPane.showMessageDialog(null,
-				"");
-		JOptionPane.showMessageDialog(null,
-				"");
+ 
 
-		return 7;
-	}
-	if (button == choices[1]) {
-		JOptionPane.showMessageDialog(null, "");
-
-		return 7;
-	}
-	return 0;
-}
-
-	public void SS7() {
 	
-}
 	//[START HEREEEEEEEEEEEE \/]
 	public int checkSS(JButton button) {
 		if (button == choices[0]) {
@@ -188,7 +141,7 @@ public int SS6check(JButton button) {
 			JOptionPane.showMessageDialog(null, "You climb into the Sewers and start to walk!");
 
 			return 7;
-		}
+		}  
 		return 0;
 	}
 
@@ -206,6 +159,7 @@ public int SS6check(JButton button) {
 		JOptionPane.showMessageDialog(null, "Process complete!");
 		frame.setBounds(450, 0, 500, 100);
 		frame.isVisible();
+		frame.pack();
 		state = 2;
 	}
 
@@ -403,7 +357,7 @@ public int SS6check(JButton button) {
 			nextState = checkSstart((JButton) arg0.getSource());
 			break;
 		case 9:
-			nextState = SS6check((JButton) arg0.getSource());
+			nextState = checkSS((JButton) arg0.getSource());
 			break;
 		case 11:
 			nextState = SS11check((JButton) arg0.getSource());
@@ -417,12 +371,12 @@ public int SS6check(JButton button) {
 		case 14:
 			nextState = SS14check((JButton) arg0.getSource());
 		default:
-			//JOptionPane.showMessageDialog(null, state + " State Not Found");
+			JOptionPane.showMessageDialog(null, state + " State Not Found");
 		}
 		switch (nextState) {
-//		case 1:
-//			stormShadowStart();
-//			break;
+		case 1:
+			stormShadowStart();
+			break;
 		case 2:
 			stormShadowTwo();
 			break;
@@ -430,11 +384,8 @@ public int SS6check(JButton button) {
 			SS6_choice();
 			break;
 		case 7:
-			SS7();
+			Game_Over();
 			break;
-//		case 7:
-//			Game_Over();
-//			break;
 		case 8:
 			SS11();
 			break;
@@ -451,7 +402,7 @@ public int SS6check(JButton button) {
 			SS14();
 			break;
 		default:
-			// JOptionPane.showMessageDialog(null, nextState + " Next State Not found");
+			 JOptionPane.showMessageDialog(null, nextState + " Next State Not found");
 
 		}
 
