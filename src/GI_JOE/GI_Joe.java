@@ -66,7 +66,7 @@ public class GI_Joe implements ActionListener {
 		JOptionPane.showMessageDialog(null, "CODE SHADOW");
 		JOptionPane.showMessageDialog(null, "Start Mission!");
 		panel.add(choices[0]);
-		panel.add(choices[1]);
+		panel.add(choices[1]);  
 		panel.add(choices[2]);
 		choices[0].setText("Parachute In!");
 		choices[1].setText("Climb Through the Sewers!");
@@ -92,7 +92,7 @@ public class GI_Joe implements ActionListener {
 					"You jumped out of the Cobra helecopter and \n landed on the roof of the GI Joe HQ!");
 			JOptionPane.showMessageDialog(null,
 					"You climb into a corrador, \n there are two ways to go! \n Left or Down to the Basement!");
-			return 6;
+			return 6;  
 		}
 		if (button == choices[1]) {
 			JOptionPane.showMessageDialog(null, "You climb into the Sewers and start to walk!");
@@ -112,17 +112,18 @@ public class GI_Joe implements ActionListener {
 	}
 
 	public void SS6_choice() {  
+		frame.dispose();
 		frame = new JFrame();
 		panel = new JPanel();
 		frame.add(panel);
-		choices[0] = new JButton();
 		choices[0].setText("Left!");
-		choices[1] = new JButton();
 		choices[1].setText("Down into the Basement!");
 		panel.add(choices[0]);
 		panel.add(choices[1]);
 
 		state = 9;
+		frame.setVisible(true);
+		frame.pack();
 	}
  
 
@@ -133,12 +134,13 @@ public class GI_Joe implements ActionListener {
 			JOptionPane.showMessageDialog(null,
 					"You walk left, tense and scared. \n As you keep walking through the corrador, \n you notice there is no one around,\n until...");
 			JOptionPane.showMessageDialog(null,
-					"Wam! \n Someone slams into you, \n throwing you to the ground. StormShadow you are under arrest by GI_Joe!");
+					"Wam! \n Someone slams into you, \n throwing you to the ground. Storm Shadow you are under arrest by GI Joe!");
 
 			return 7;
 		}
 		if (button == choices[1]) {
-			JOptionPane.showMessageDialog(null, "You climb into the Sewers and start to walk!");
+			JOptionPane.showMessageDialog(null, "You climb into the basement! \n Its dark and its hard to see \n Wam! \n Something hits you in the back of the head and you fall into unconsciousness");
+			JOptionPane.showMessageDialog(null, "You open your eyes \n 'Welcome Stormshadow!' \n 'To the Box!' \n 'you will never escape!' \n 'Muahahwaha!'");
 
 			return 7;
 		}  
